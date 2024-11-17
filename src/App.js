@@ -7,52 +7,52 @@ import { useState } from 'react';
 
 
 const App = () => {
-  const [currentNumber, setCurrentNumber] = useState('0');
-  const [firstNumber, setFirstNumber] = useState('0');
-  const [operation, setOperation] = useState('');
+  const [numeropadrao, setNumeroPadrao] = useState('0');
+  const [primeironumero, setPrimeironumero] = useState('0');
+  const [conta, setConta] = useState('');
 
   const handleOnClear = () => {
-    setCurrentNumber('0')
-    setFirstNumber('0')
-    setOperation('')
+    setNumeroPadrao('0')
+    setPrimeironumero('0')
+    setConta('')
   };
 
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`)
+    setNumeroPadrao(prev => `${prev === '0' ? '' : prev}${num}`)
   }
 
   const handleSumNumbers = () => {
 
-    if(firstNumber === '0'){
-        setFirstNumber(String(currentNumber));
-        setCurrentNumber('0')
-        setOperation('+')
+    if(primeironumero === '0'){
+        setPrimeiroNumero(String(numeropadrao));
+        setNumeroPadrao('0')
+        setConta('+')
     }else {
-      const sum = Number(firstNumber) + Number(currentNumber);
-      setCurrentNumber(String(sum))
-      setOperation('')
+      const sum = Number(primeironumero) + Number(numeropadrao);
+      setNumeroPadrao(String(sum))
+      setConta('')
     }
 
   }
 
   const handleMinusNumbers = () => {
 
-    if(firstNumber === '0'){
-        setFirstNumber(String(currentNumber));
-        setCurrentNumber('0')
-        setOperation('-')
+    if(primeironumero === '0'){
+        setPrimeironumero(String(numeropadrao));
+        setNumeroPadrao('0')
+        setConta('-')
     }else {
-      const sum = Number(firstNumber) - Number(currentNumber);
-      setCurrentNumber(String(sum))
-      setOperation('')
+      const sum = Number(primeironumero) - Number(numeropadrao);
+      setNumeroPadrao(String(sum))
+      setConta('')
     }
 
   }
 
   const handleEquals = () => {
 
-    if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
-        switch(operation){
+    if(primeironumero !== '0' && conta !== '' && numeropadrao !== '0'){
+        switch(conta){
           case '+':
             handleSumNumbers();
             break;
@@ -69,7 +69,7 @@ const App = () => {
   return (
     <Container>
       <Content>
-        <Input value={currentNumber}/>
+        <Input value={numeropadrao}/>
         <Row>
           <Button label="x"/>
           <Button label="/"/>
